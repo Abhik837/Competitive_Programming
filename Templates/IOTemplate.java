@@ -4,88 +4,86 @@ import java.util.*;
 
 public class IOTemplate // Remember to change ClassName
 {
+
     static class FastReader {
+        BufferedReader b;
+        StringTokenizer s;
 
-        static class FastReader {
-            BufferedReader b;
-            StringTokenizer s;
+        public FastReader() {
+            b = new BufferedReader(new InputStreamReader(System.in));
+        }
 
-            public FastReader() {
-                b = new BufferedReader(new InputStreamReader(System.in));
-            }
-
-            String next() {
-                while (s == null || !s.hasMoreElements()) {
-                    try {
-                        String line = b.readLine();
-                        if (line == null) {
-                            throw new NoSuchElementException("No input available");
-                        }
-                        s = new StringTokenizer(line);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-                return s.nextToken();
-            }
-
-            int nextInt() {
+        String next() {
+            while (s == null || !s.hasMoreElements()) {
                 try {
-                    return Integer.parseInt(next());
-                } catch (NumberFormatException e) {
-                    throw new InputMismatchException("Invalid integer input");
-                }
-            }
-
-            long nextLong() {
-                return Long.parseLong(next());
-            }
-
-            double nextDouble() {
-                return Double.parseDouble(next());
-            }
-
-            String nextLine() {
-                String str = "";
-                try {
-                    if (s != null && s.hasMoreTokens()) {
-                        str = s.nextToken("\n");
-                    } else {
-                        str = b.readLine();
+                    String line = b.readLine();
+                    if (line == null) {
+                        throw new NoSuchElementException("No input available");
                     }
+                    s = new StringTokenizer(line);
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    throw new RuntimeException(e);
                 }
-                return str;
+            }
+            return s.nextToken();
+        }
+
+        int nextInt() {
+            try {
+                return Integer.parseInt(next());
+            } catch (NumberFormatException e) {
+                throw new InputMismatchException("Invalid integer input");
             }
         }
 
-        public static FastReader sc = new FastReader();
-        public static StringBuilder out = new StringBuilder();
-        public static DecimalFormat round = new DecimalFormat("#.00");
-        public static double EPS = 1e-6;
-        public static int MOD = (int) (1e9 + 7);
-        public static int[] dx = { 0, 0, 1, -1 };
-        public static int[] dy = { 1, -1, 0, 0 };
-
-        public static void dbg(String varName, Object value) {
-            int lineNumber = Thread.currentThread().getStackTrace()[2].getLineNumber();
-            System.err.println(lineNumber + ": " + varName + " = " + value);
+        long nextLong() {
+            return Long.parseLong(next());
         }
 
-        public static void dbg(String varName, Object[] arr) {
-            int lineNumber = Thread.currentThread().getStackTrace()[2].getLineNumber();
-            System.err.println(lineNumber + ": " + varName + " = " + Arrays.toString(arr));
+        double nextDouble() {
+            return Double.parseDouble(next());
         }
 
-        public static void solve(int num_tc) {
-            
+        String nextLine() {
+            String str = "";
+            try {
+                if (s != null && s.hasMoreTokens()) {
+                    str = s.nextToken("\n");
+                } else {
+                    str = b.readLine();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return str;
         }
+    }
 
-        public static void main(String[] args) {
-            int t = sc.nextInt();
-            solve(t);
-            System.out.println(out.toString());
-        }
+    public static FastReader sc = new FastReader();
+    public static StringBuilder out = new StringBuilder();
+    public static DecimalFormat round = new DecimalFormat("#.00");
+    public static double EPS = 1e-6;
+    public static int MOD = (int) (1e9 + 7);
+    public static int[] dx = { 0, 0, 1, -1 };
+    public static int[] dy = { 1, -1, 0, 0 };
+
+    public static void dbg(String varName, Object value) {
+        int lineNumber = Thread.currentThread().getStackTrace()[2].getLineNumber();
+        System.err.println(lineNumber + ": " + varName + " = " + value);
+    }
+
+    public static void dbg(String varName, Object[] arr) {
+        int lineNumber = Thread.currentThread().getStackTrace()[2].getLineNumber();
+        System.err.println(lineNumber + ": " + varName + " = " + Arrays.toString(arr));
+    }
+
+    public static void solve(int num_tc) {
+
+    }
+
+    public static void main(String[] args) {
+        int t = sc.nextInt();
+        solve(t);
+        System.out.println(out.toString());
     }
 }

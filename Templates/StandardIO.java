@@ -2,7 +2,7 @@ import java.io.*;
 import java.text.DecimalFormat;
 import java.util.*;
 
-public class IOTemplate // Remember to change ClassName
+public class StandardIO // Remember to change ClassName
 {
 
     static class FastReader {

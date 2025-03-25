@@ -79,8 +79,9 @@ public class AplusB
     public static void main(String[] args) {
         int lines = sc.nextInt();
         for(int i = 0; i < lines; i++)
-        {
-            out.append(sc.nextInt() + sc.nextInt());
+        {   
+            String input = sc.nextLine();
+            out.append(Integer.parseInt(input.substring(0,1)) + Integer.parseInt(input.substring(2)));
             System.out.println(out.toString());
             out.setLength(0);
         }

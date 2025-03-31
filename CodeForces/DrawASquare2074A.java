@@ -1,0 +1,121 @@
+import java.io.*;
+import java.text.DecimalFormat;
+import java.util.*;
+
+public class DrawASquare2074A
+{
+    static class FastReader {
+        BufferedReader b;
+        StringTokenizer s;
+
+        public FastReader() {
+            b = new BufferedReader(new InputStreamReader(System.in));
+        }
+
+        String next() {
+            while (s == null || !s.hasMoreElements()) {
+                try {
+                    String line = b.readLine();
+                    if (line == null) {
+                        throw new NoSuchElementException("No input available");
+                    }
+                    s = new StringTokenizer(line);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            return s.nextToken();
+        }
+
+        int nextInt() {
+            try {
+                return Integer.parseInt(next());
+            } catch (NumberFormatException e) {
+                throw new InputMismatchException("Invalid integer input");
+            }
+        }
+
+        long nextLong() {
+            return Long.parseLong(next());
+        }
+
+        double nextDouble() {
+            return Double.parseDouble(next());
+        }
+
+        String nextLine() {
+            String str = "";
+            try {
+                if (s != null && s.hasMoreTokens()) {
+                    str = s.nextToken("\n");
+                } else {
+                    str = b.readLine();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return str;
+        }
+    }
+
+    public static FastReader sc = new FastReader();
+    public static StringBuilder out = new StringBuilder();
+    public static DecimalFormat round = new DecimalFormat("#.00");
+    public static double EPS = 1e-6;
+    public static int MOD = (int) (1e9 + 7);
+    public static int[] dx = { 0, 0, 1, -1 };
+    public static int[] dy = { 1, -1, 0, 0 };
+
+    public static void dbg(String varName, Object value) {
+        int lineNumber = Thread.currentThread().getStackTrace()[2].getLineNumber();
+        System.err.println(lineNumber + ": " + varName + " = " + value);
+    }
+
+    public static void dbg(String varName, Object[] arr) {
+        int lineNumber = Thread.currentThread().getStackTrace()[2].getLineNumber();
+        System.err.println(lineNumber + ": " + varName + " = " + Arrays.toString(arr));
+    }
+
+    public static int DistanceSquared(int x1, int x2, int y1, int y2)
+    {
+        return (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2);
+    }
+
+    public static void main(String[] args) {
+        int lines = sc.nextInt();
+        for(int i = 0; i < lines; i++)
+        {
+            int l = sc.nextInt();
+            int r = sc.nextInt();
+            int d = sc.nextInt();
+            int u = sc.nextInt(); 
+            int lu = DistanceSquared(l * -1, 0, 0, u);
+            int ur = DistanceSquared(0, r, u, 0);
+            int rd = DistanceSquared(r, 0, 0, d * -1);
+            int dl = DistanceSquared(0, l * -1, d * -1, 0);
+            int diagonalVert = DistanceSquared(0, 0, u, d * -1);
+            int diagonalHorz = DistanceSquared(r, l * -1, 0, 0);
+            ArrayList<Integer> distances = new ArrayList<>();
+            distances.add(lu);
+            distances.add(ur);
+            distances.add(rd);
+            distances.add(dl);
+            boolean sides = true;
+
+            for(int k = 0; k < 3; k++)
+            {
+                if(!distances.get(k).equals(distances.get(k+1)))
+                {
+                    sides = false;
+                    break;
+                }
+            }
+            if(sides == true && diagonalVert == diagonalHorz && diagonalVert == 2 * lu)
+                out.append("Yes");
+            else
+                out.append("No");
+            System.out.println(out.toString());
+            out.setLength(0);
+        }
+    }
+}

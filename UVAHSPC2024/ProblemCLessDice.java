@@ -76,11 +76,6 @@ public class ProblemCLessDice
         System.err.println(lineNumber + ": " + varName + " = " + Arrays.toString(arr));
     }
 
-    public static int DistanceSquared(int x1, int x2, int y1, int y2)
-    {
-        return (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2);
-    }
-
     public static void main(String[] args) 
     {
         int faces = sc.nextInt();
